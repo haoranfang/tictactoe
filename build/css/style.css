@@ -1,0 +1,22 @@
+/** all buttons are the same size **/
+button {
+  width: 80px;
+  height: 80px;
+}
+
+.gridline1{
+	display:inline-block;
+}
+
+
+.gridline2{
+	display:inline-block;
+}
+
+.gridline3{
+	display:inline-block;
+}
+/** make buttons bigger font **/
+/*.btn-group-lg>.btn, .btn-lg, .btn {
+  font-size: 30px;
+}*/
