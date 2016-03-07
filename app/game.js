@@ -1,15 +1,16 @@
+'use strict';
 var React = require('react');
 var ReactDOM = require('react-dom');
-var view = require('./components.js')
+var view = require('./components.js');
 	
 
-Class TicTacToeGame {
+class TicTacToeGame {
 	info(){
 		this.board = [0,0,0,0,0,0,0,0,0];
 		this.winner = undefined;
 		this.turn = 1;
-		this.1win = 0;
-		this.2win = 0;
+		this.p1win = 0;
+		this.p2win = 0;
 		this.ties = 0;
 		this.previous_turn = 0;
 	 	this.times = 0;
@@ -18,11 +19,11 @@ Class TicTacToeGame {
 	win() {
 		if(this.turn = 1){
 			this.winner = 1;
-			this.1win++;
+			this.p1win++;
 			return 1;
 		} else{
 			this.winner = 2;
-			this.2win++;
+			this.p2win++;
 			return 2;
 		}
 	}
@@ -44,8 +45,8 @@ Class TicTacToeGame {
 		this.board = [0,0,0,0,0,0,0,0,0];
 		this.winner = undefined;
 		this.turn = 1;
-		this.1win = 0;
-		this.2win = 0;
+		this.p1win = 0;
+		this.p2win = 0;
 		this.ties = 0;
 		this.times = 0;
 		this.previous_turn = 0;

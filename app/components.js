@@ -1,18 +1,20 @@
+'use strict';
+
 var React = require('react');
 var ReactDOM = require('react-dom');
 var GameLogic = require('./game.js');
-var Controller = require('./main.js')
+var Controller = require('./main.js');
 var game = GameLogic.Game;
 
 //interact with the board
 var board = React.createClass({
 	handleClick:function() {
-		Controller.click.handleClick(this.props.id)
-	}
+		Controller.click.handleClick(this.props.id);
+	},
 	render:function() {
-		return <button className ={'board'} onClick = {this.handleCliker} controller = {Controller.click}> </button>
+		return <button className ={'board'} onClick = {this.handleCliker} controller = {Controller.click}> </button>;
 	}
-})
+});
 ReactDOM.render(<title />,
                 document.getElementById('title'));
 
@@ -33,8 +35,8 @@ var frame = React.createClass({
       <div>
       	<h2> <li>Scoreboard</li>
 			<li>Ties{game.ties}</li>
-			<li>Player One {game.1win}</li>
-			<li>Player Two {game.2win}</li>
+			<li>Player One {game.p1win}</li>
+			<li>Player Two {game.p2win}</li>
 		</h2>;
 		<button onClick= {this.handleRestart}> Reset the Game</button>
 		<button onClick= {this.handleAgain}> Continue </button>
