@@ -5,6 +5,10 @@ var view = require('./components.js');
 	
 
 class TicTacToeGame {
+    constructor() {
+        // Initialize all attributes
+        this.info();
+    }
 	info(){
 		this.board = [0,0,0,0,0,0,0,0,0];
 		this.winner = undefined;
@@ -92,6 +96,10 @@ class TicTacToeGame {
 		}
 	}
 
+    get_winner() {
+        // TODO: make winner private
+        return this.winner;
+    }
 }
 
 module.exports.Game = new TicTacToeGame();

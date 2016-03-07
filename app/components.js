@@ -4,10 +4,30 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var GameLogic = require('./game.js');
 var Controller = require('./main.js');
-var game = GameLogic.Game;
 
+var Title = React.createClass({
+    render: function() {
+        // define "titleString" as a property of this newly created class
+        return <div>{this.props.titleString}</div>;
+    }
+
+});
+
+// Class name has to start with uppercase letter,
+// otherwise render cannot recognize and will render as html tag
+var InfoBox = React.createClass({
+    render: function() {
+        return <div>{this.props.gameStatus}</div>;
+    }
+});
+
+var Scoreboard = React.createClass({
+    render: function() {
+        return <div>Score: X:{this.props.X}, O:{this.props.O}, Ties:{this.props.ties}</div>
+    }
+});
 //interact with the board
-var board = React.createClass({
+var Board = React.createClass({
 	handleClick:function() {
 		Controller.click.handleClick(this.props.id);
 	},
@@ -15,8 +35,6 @@ var board = React.createClass({
 		return <button className ={'board'} onClick = {this.handleCliker} controller = {Controller.click}> </button>;
 	}
 });
-ReactDOM.render(<title />,
-                document.getElementById('title'));
 
 var frame = React.createClass({
   handleAgain: function(){
@@ -26,21 +44,22 @@ var frame = React.createClass({
   	Controller.restart.handleReset();
   },
   render: function() {
+    var game = GameLogic.Game;
+    var gameStatus;
   	if(game.winner == 1 || game.winner == 2) {
-  		return <div>Winner is Player {game.winner}</div>;
+        gameStatus = 'Winner is Player ' + game.winner;
   	} else{
-  		return <div>Your turn! {game.turn}</div>
+  	    gameStatus = 'Your turn! ' + game.turn;
   	}
     return (
       <div>
-      	<h2> <li>Scoreboard</li>
-			<li>Ties{game.ties}</li>
-			<li>Player One {game.p1win}</li>
-			<li>Player Two {game.p2win}</li>
-		</h2>;
+        <Title titleString={this.props.titleString} />
+        <InfoBox gameStatus={gameStatus} />
+        <Board />
+        <Scoreboard X={game.p1win} O={game.p2win} ties={game.ties} />
 		<button onClick= {this.handleRestart}> Reset the Game</button>
 		<button onClick= {this.handleAgain}> Continue </button>
-      </div>)
+      </div>);
   }
 })
 

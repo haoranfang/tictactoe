@@ -6,7 +6,6 @@ var Game = require('./game.js');
 var View = require('./components.js')
 var BoardFrame = View.frame;
 
-
 var click = {
   handleClick: function(box) {
     Game.TicTacToeGame.Click(box);
@@ -31,3 +30,7 @@ var restart = {
 module.exports.click = click;
 module.exports.again = again;
 module.exports.restart = restart;
+
+// Render the frame.
+// Other components are put in the frame
+ReactDOM.render(<BoardFrame titleString={"Tic Tac Toe"} />, document.getElementById('frame'));
