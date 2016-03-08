@@ -46,7 +46,7 @@ var Board = React.createClass({
     // The actual value of the element will be shown on the button,
     // indicating who clicks the button
     var ButtonItems = this.props.board.map(function(value, index) {
-      return <ButtonItem id = {index} value={value}/>
+      return <ButtonItem key={index} id = {index} value={value}/>
     });    
     
     return (
