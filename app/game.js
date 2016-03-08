@@ -21,7 +21,7 @@ class TicTacToeGame {
 	}
 
 	win() {
-		if(this.turn = 1){
+		if(this.turn == 1){
 			this.winner = 1;
 			this.p1win++;
 			return 1;
@@ -57,33 +57,36 @@ class TicTacToeGame {
 	}
 
 	end(){
-		if(board[0]===board[1]===board[2] || board[3]===board[4]===board[5] || board[6]===board[7]===board[8]) {
+		if(
+            this.board[0]===this.board[1] && this.board[1]===this.board[2] && this.board[2] != 0 ||
+            this.board[3]===this.board[4] && this.board[4]===this.board[5] && this.board[5] != 0 || 
+            this.board[6]===this.board[7] && this.board[7]===this.board[8] && this.board[8] != 0 ||
+            this.board[0]===this.board[3] && this.board[3]===this.board[6] && this.board[6] != 0 || 
+            this.board[1]===this.board[4] && this.board[4]===this.board[7] && this.board[7] != 0 || 
+            this.board[2]===this.board[5] && this.board[5]===this.board[8] && this.board[8] != 0 ||
+            this.board[0]===this.board[4] && this.board[4]===this.board[8] && this.board[8] != 0 ||
+            this.board[2]===this.board[4] && this.board[4]===this.board[6] && this.board[6] != 0
+         ) {
 			return this.win();
-		} else if (board[0]===board[3]===board[6] || board[1]===board[4]===board[7] || board[2]===board[5]===board[8]){
-			return this.win();
-		} else  if (board[0]===board[4]===board[8] || board[2]===board[4]===board[6] ) {
-			return this.win();
-		} else if (this.times ===9) {
+		} else if (this.times === 9) {
 			return this.ties++;
 		} else {
 			return undefined;
 		}
 	}   // if return this.win(), winner is the current player
 
-	Click(box){
-		if(this.board[box] === 1 || this.board[box] === 2) {
+	click(box){
+		if(this.winner !== undefined || this.board[box] === 1 || this.board[box] === 2) {
 			return undefined;
 		} else {
-			this.board[box] = get_turn();
-			this.winner = end();
+			this.board[box] = this.get_turn();
+			this.winner = this.end();
 		}
 	}
 	
 	get_turn(){
 		this.times ++;
-		if(this.times === 9) {   //game is over !!!!!!!!!!
-			return undefined;
-		} else if (this.turn === 1) {
+		if (this.turn === 1) {
 			this.previous_turn = 1;
 			this.turn = 2;
 			return 2;
@@ -102,4 +105,6 @@ class TicTacToeGame {
     }
 }
 
-module.exports.Game = new TicTacToeGame();
+// This is how to export a class.
+// See: https://github.com/info498e-w16/pattern-summary/blob/master/quackers.js
+module.exports.TicTacToeGame = TicTacToeGame;
